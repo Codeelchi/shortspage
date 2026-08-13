@@ -1,0 +1,6 @@
+---
+import { CATEGORY_META } from '../config/site';
+import { topicFilterUrl } from '../utils/paths';
+const channels = Object.entries(CATEGORY_META);
+---
+<section class="channel-formats container section" aria-labelledby="formats-title"><div class="section-heading section-heading--split"><div><p class="eyebrow"><i></i> CHANNEL FORMAT</p><h2 id="formats-title">Built for the <span>scroll.</span></h2></div><p>Three content channels, one filter: relevance. Pick the signal type you want and jump straight into the matching Shorts.</p></div><div class="format-grid">{channels.map(([category,meta],index) => <a class={`format-card format-card--${meta.slug}`} href={topicFilterUrl(category)}><div class="format-card__top"><span>0{index+1}</span><small>{meta.eyebrow}</small></div><h3>{meta.title}</h3><p>{meta.summary}</p><div class="format-signal" aria-hidden="true"><i></i><i></i><i></i></div><footer><b>FILTER</b><em>OPEN SIGNALS ↗</em></footer></a>)}</div></section>
