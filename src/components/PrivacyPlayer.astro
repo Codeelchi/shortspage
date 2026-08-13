@@ -1,0 +1,22 @@
+---
+interface Props { youtubeId: string; title: string; thumbnail: string; }
+const { youtubeId, title, thumbnail } = Astro.props;
+---
+<div class="privacy-player" data-youtube-player data-video-id={youtubeId} data-video-title={title}><img src={thumbnail} alt={`${title} video preview`} width="360" height="640" loading="lazy" decoding="async" /><button type="button" class="privacy-player__button" aria-label={`Play ${title}`}><span aria-hidden="true">▶</span><b>Play here</b></button><p>Loads the YouTube player from youtube-nocookie.com only after you activate it.</p></div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-youtube-player]').forEach((player) => {
+    const button = player.querySelector<HTMLButtonElement>('button');
+    button?.addEventListener('click', () => {
+      const id = player.dataset.videoId;
+      const title = player.dataset.videoTitle ?? 'YouTube Short';
+      if (!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      player.replaceChildren(iframe);
+    }, { once: true });
+  });
+</script>
