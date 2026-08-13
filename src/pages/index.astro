@@ -1,0 +1,37 @@
+---
+const channel = 'https://www.youtube.com/@AiTechTrendsShort';
+const shorts = `${channel}/shorts`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content="AI Tech Trends Shorts — fast, focused videos about AI tools, tech trends and automation." />
+  <meta name="theme-color" content="#09090b" />
+  <title>AI Tech Trends Shorts</title>
+</head>
+<body>
+  <header><a class="brand" href="#top"><span>▶</span> AI Tech Trends <b>SHORTS</b></a><a href={channel} target="_blank" rel="noreferrer">YouTube ↗</a></header>
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="kicker">AI MOVES FAST. KEEP UP.</p>
+        <h1>The signal in <em>AI & tech.</em><br/>Minus the noise.</h1>
+        <p class="lead">Quick, focused videos about artificial intelligence, useful tools, automation and the technology changing what comes next.</p>
+        <div class="actions"><a class="primary" href={shorts} target="_blank" rel="noreferrer">▶ Watch the Shorts</a><a href="#topics">Explore ↓</a></div>
+      </div>
+      <div class="signal" aria-hidden="true"><small>AITT / SIGNAL</small><strong>[ AI ]</strong><div><i></i><i></i><i></i><i></i><i></i></div><small>SCAN · FILTER · WATCH</small></div>
+    </section>
+    <section class="strip">ARTIFICIAL INTELLIGENCE ✦ TOOLS ✦ AUTOMATION ✦ EMERGING TECH ✦ PRODUCT UPDATES</section>
+    <section class="topics" id="topics">
+      <div class="intro"><p>WHAT YOU'LL FIND</p><h2>Short-form tech.<br/>Long-term relevance.</h2></div>
+      <div class="cards"><article><b>01</b><h3>AI, decoded</h3><p>Models, capabilities, releases and the shifts worth knowing about.</p></article><article><b>02</b><h3>Tools that matter</h3><p>Useful AI and tech tools, stripped down to what they do and why they matter.</p></article><article><b>03</b><h3>Trends in motion</h3><p>Fast-moving developments across automation, software and emerging technology.</p></article></div>
+    </section>
+    <section class="cta"><p>STAY AHEAD</p><h2>Your next tech rabbit hole<br/>is one Short away.</h2><a href={shorts} target="_blank" rel="noreferrer">Watch on YouTube ↗</a></section>
+  </main>
+  <footer><span>AI TECH TRENDS SHORTS</span><span>Fast signal for a fast-moving industry.</span><a href={channel} target="_blank" rel="noreferrer">@AiTechTrendsShort ↗</a></footer>
+<style is:global>
+:root{--bg:#09090b;--fg:#f4f4f5;--muted:#a1a1aa;--line:#ffffff1a;--pink:#ff335f;--violet:#8b5cf6;--acid:#c7ff4a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 70% 12%,#8b5cf624,transparent 28rem),var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif}a{color:inherit;text-decoration:none}header,main,footer{width:min(1180px,calc(100% - 40px));margin:auto}header{height:90px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font:600 12px ui-monospace,monospace;letter-spacing:.08em}.brand{display:flex;align-items:center;gap:10px}.brand span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:9px;color:var(--pink)}.brand b{color:var(--muted);font-size:9px}.hero{min-height:690px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:60px}.kicker,.intro>p,.cta>p{font:600 11px ui-monospace,monospace;letter-spacing:.14em;color:#b4b4bc}.kicker:before,.intro>p:before,.cta>p:before{content:'';display:inline-block;width:22px;height:1px;background:var(--pink);vertical-align:middle;margin-right:10px}.hero h1,.intro h2,.cta h2{margin:20px 0 0;letter-spacing:-.065em;line-height:.98}.hero h1{font-size:clamp(52px,7vw,98px)}.hero h1 em{display:block;font-style:normal;background:linear-gradient(90deg,#fff,var(--acid),var(--violet));-webkit-background-clip:text;color:transparent}.lead{max-width:650px;color:var(--muted);font-size:18px;line-height:1.7}.actions{display:flex;align-items:center;gap:28px;margin-top:32px}.primary{background:#fff;color:#111;padding:17px 22px;border-radius:999px;font-weight:800}.signal{min-height:390px;border:1px solid #ffffff24;border-radius:28px;background:linear-gradient(145deg,#18181de6,#09090be6);box-shadow:0 40px 90px #0008;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:28px;transform:rotate(3deg)}.signal small{align-self:stretch;color:#777;font:500 10px ui-monospace,monospace;letter-spacing:.12em}.signal strong{font-size:76px;background:linear-gradient(135deg,#fff,var(--acid),var(--violet));-webkit-background-clip:text;color:transparent}.signal div{align-self:stretch;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.signal i{height:3px;background:#34343b}.signal i:nth-child(-n+3){background:linear-gradient(90deg,var(--pink),var(--violet))}.strip{width:100vw;margin-left:calc(50% - 50vw);border-block:1px solid var(--line);padding:16px;text-align:center;color:#777;font:500 11px ui-monospace,monospace;letter-spacing:.12em}.topics{padding:120px 0}.intro{display:grid;grid-template-columns:1fr 1.4fr;align-items:end;margin-bottom:50px}.intro h2{font-size:clamp(42px,6vw,76px)}.cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.cards article{min-height:300px;padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}.cards article:last-child{border-right:0}.cards b{margin-bottom:auto;color:#666;font:500 10px ui-monospace,monospace}.cards h3{font-size:24px;margin:0 0 12px}.cards p{margin:0;color:#888;line-height:1.65}.cta{width:100%;margin:0 0 50px;padding:70px;border-radius:28px;background:linear-gradient(135deg,var(--pink),#7c3aed 65%,#3b157c)}.cta h2{font-size:clamp(46px,7vw,84px)}.cta a{display:inline-block;margin-top:34px;background:#fff;color:#111;padding:17px 22px;border-radius:999px;font-weight:800}footer{min-height:120px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#777;font:500 10px ui-monospace,monospace;letter-spacing:.06em}footer span:nth-child(2){text-align:center}footer a{text-align:right;color:#aaa}@media(max-width:820px){.hero{grid-template-columns:1fr;padding:70px 0}.signal{min-height:320px}.intro{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.cards article{border-right:0;border-bottom:1px solid var(--line);min-height:230px}.cta{padding:38px 24px}footer{grid-template-columns:1fr;gap:12px;padding:30px 0}footer span:nth-child(2),footer a{text-align:left}}@media(max-width:520px){header,main,footer{width:min(100% - 28px,1180px)}.brand b{display:none}.hero h1{font-size:50px}.lead{font-size:16px}.actions{align-items:flex-start;flex-direction:column}.signal strong{font-size:56px}}
+</style>
+</body></html>
