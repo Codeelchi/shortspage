@@ -1,0 +1,9 @@
+---
+import type { ShortEntry } from '../utils/shorts';
+import { formatDate, getThumbnail } from '../utils/shorts';
+import { shortUrl } from '../utils/paths';
+interface Props { entry: ShortEntry; }
+const { entry } = Astro.props;
+const { data } = entry;
+---
+<section class="featured-signal container section" aria-labelledby="featured-title"><div class="section-heading section-heading--split"><div><p class="eyebrow"><i></i> FEATURED SIGNAL</p><h2 id="featured-title">One signal.<br/><span>More context.</span></h2></div><p>Watch fast on YouTube. Use the site when you want the takeaway, tags, sources and related signals around the Short.</p></div><article class="featured-card"><a class="featured-card__media" href={shortUrl(data.slug)} aria-label={`Open featured signal: ${data.title}`}><img src={getThumbnail(entry)} alt={`${data.title} thumbnail`} width="360" height="640" loading="lazy" decoding="async" /><span class="play-indicator play-indicator--large" aria-hidden="true">▶</span>{data.demo && <span class="demo-badge">DEMO SIGNAL</span>}</a><div class="featured-card__content"><div class="signal-kicker"><span>{data.category.toUpperCase()}</span><span>FEATURED</span></div><h3>{data.title}</h3><p class="featured-hook">{data.hook}</p><p>{data.description}</p><div class="featured-meta"><time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt)}</time>{data.duration && <span>{data.duration}</span>}</div><div class="tag-list tag-list--large">{data.tags.map((tag) => <span>#{tag.replaceAll(' ','')}</span>)}</div><div class="actions"><a class="button primary" href={data.youtubeUrl} target="_blank" rel="noreferrer">▶ {data.demo ? 'Open channel' : 'Watch on YouTube'}</a><a class="button ghost" href={shortUrl(data.slug)}>Read the signal</a></div></div></article></section>
