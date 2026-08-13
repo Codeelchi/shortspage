@@ -1,6 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import { CATEGORY_META, type ShortCategory } from '../config/site';
-import { absoluteUrl, withBase } from './paths';
+import { absoluteUrl, withBase } from './site-paths';
 
 export type ShortEntry = CollectionEntry<'shorts'>;
 export const sortShorts = (entries: ShortEntry[]) => [...entries].sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
