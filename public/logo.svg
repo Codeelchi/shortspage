@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title desc">
+<title id="title">AI and Tech Trends</title><desc id="desc">Circular blue neon AI and Tech Trends logo</desc>
+<defs>
+  <radialGradient id="bg" cx="50%" cy="42%" r="62%"><stop offset="0" stop-color="#0d234d"/><stop offset=".7" stop-color="#061228"/><stop offset="1" stop-color="#020611"/></radialGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#63efff"/><stop offset=".45" stop-color="#13c7ff"/><stop offset="1" stop-color="#1e62ff"/></linearGradient>
+  <linearGradient id="white" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset=".7" stop-color="#dce8f8"/><stop offset="1" stop-color="#8ca2bd"/></linearGradient>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="600" height="600" fill="#02040b"/>
+<circle cx="300" cy="300" r="252" fill="url(#bg)" stroke="#124a9e" stroke-width="10"/>
+<circle cx="300" cy="300" r="236" fill="none" stroke="url(#blue)" stroke-width="8" filter="url(#glow)"/>
+<circle cx="300" cy="300" r="218" fill="none" stroke="#2be1ff" stroke-opacity=".7" stroke-width="2"/>
+<g fill="none" stroke="#16bfff" stroke-width="3" stroke-linecap="round" opacity=".78">
+ <path d="M158 177h74l32 32v43M442 177h-74l-32 32v43M138 231h85l28 28M462 231h-85l-28 28"/>
+ <path d="M158 423h74l32-32v-43M442 423h-74l-32-32v-43M138 369h85l28-28M462 369h-85l-28-28"/>
+ <path d="M270 108v62l22 22v54M330 108v62l-22 22v54M270 492v-62l22-22v-54M330 492v-62l-22-22v-54"/>
+</g>
+<g fill="#53e9ff" filter="url(#glow)"><circle cx="158" cy="177" r="5"/><circle cx="442" cy="177" r="5"/><circle cx="138" cy="231" r="5"/><circle cx="462" cy="231" r="5"/><circle cx="158" cy="423" r="5"/><circle cx="442" cy="423" r="5"/><circle cx="138" cy="369" r="5"/><circle cx="462" cy="369" r="5"/></g>
+<path d="M125 309h350" stroke="url(#blue)" stroke-width="3" filter="url(#glow)"/>
+<text x="300" y="292" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="82" font-weight="900" font-style="italic" fill="url(#white)" stroke="#7b91ac" stroke-width="1">AI&amp;TECH</text>
+<text x="300" y="374" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="68" font-weight="900" font-style="italic" fill="url(#blue)" stroke="#0359b7" stroke-width="1">TRENDS</text>
+<g fill="#21caff"><path d="M253 402h27l-14 13h-27z"/><path d="M287 402h27l-14 13h-27z"/><path d="M321 402h27l-14 13h-27z"/></g>
+</svg>
