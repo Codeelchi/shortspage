@@ -1,0 +1,13 @@
+---
+import '../styles/global.css';
+import '../styles/components.css';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config/site';
+import { withBase } from '../utils/paths';
+interface Props { title?: string; description?: string; canonicalPath?: string; image?: string; type?: 'website' | 'article'; noindex?: boolean; structuredData?: Record<string, unknown> | Record<string, unknown>[]; pageClass?: string; }
+const { title = `${SITE.name} — ${SITE.tagline}`, description, canonicalPath, image, type, noindex, structuredData, pageClass = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#020611" /><meta name="color-scheme" content="dark" /><link rel="icon" href={withBase('logo.svg')} type="image/svg+xml" /><link rel="sitemap" href={withBase('sitemap.xml')} /><SEO title={title} description={description} canonicalPath={canonicalPath} image={image} type={type} noindex={noindex} structuredData={structuredData} /></head><body class={pageClass}><a class="skip-link" href="#main-content">Skip to content</a><div class="site-shell"><div class="grid-bg" aria-hidden="true"></div><div class="ambient ambient-a" aria-hidden="true"></div><div class="ambient ambient-b" aria-hidden="true"></div><Header currentPath={Astro.url.pathname} /><main id="main-content"><slot /></main><Footer /></div></body></html>
