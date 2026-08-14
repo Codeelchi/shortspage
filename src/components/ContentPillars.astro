@@ -10,6 +10,7 @@ const pillars = [
     text: 'Models, releases, companies and industry shifts — compressed into the change that actually matters.',
     slug: CATEGORY_META['AI News'].slug,
     visual: 'news',
+    notation: 'SCAN',
   },
   {
     number: '02',
@@ -18,6 +19,7 @@ const pillars = [
     text: 'Apps, agents, automation and workflows with a clear bias toward practical value.',
     slug: CATEGORY_META['AI Tools'].slug,
     visual: 'tools',
+    notation: 'FLOW',
   },
   {
     number: '03',
@@ -26,11 +28,12 @@ const pillars = [
     text: 'Emerging technology, software and digital business — watched for the shifts that change how people work.',
     slug: CATEGORY_META['Tech Trends'].slug,
     visual: 'trends',
+    notation: 'OUTLOOK',
   },
 ];
 ---
 <section class="content-pillars container section" id="topics" aria-labelledby="pillars-title">
-  <div class="section-heading">
+  <div class="section-heading content-pillars__heading">
     <p class="eyebrow"><i></i> CONTENT PILLARS</p>
     <h2 id="pillars-title">The topics that <span>move fastest.</span></h2>
     <p class="section-copy">The editorial filter stays simple: understand what changed, why it matters and what is worth testing next.</p>
@@ -40,37 +43,45 @@ const pillars = [
     {pillars.map((pillar) => (
       <article class={`pillar-card pillar-card--${pillar.visual}`}>
         <div class="pillar-card__top"><span>{pillar.number}</span><small>{pillar.label}</small></div>
+        <div class="pillar-visual pillar-visual--${pillar.visual}" aria-hidden="true">
+          <b class="pillar-visual__notation">{pillar.notation}</b>
 
-        {pillar.visual === 'news' && (
-          <div class="pillar-visual pillar-visual--news" aria-hidden="true">
-            <span class="news-radar"></span>
-            <i class="news-line news-line--one"></i>
-            <i class="news-line news-line--two"></i>
-            <i class="news-line news-line--three"></i>
-            <b>LIVE</b>
-          </div>
-        )}
+          {pillar.visual === 'news' && (
+            <>
+              <span class="news-radar"><i></i></span>
+              <span class="news-pulse news-pulse--one"></span>
+              <span class="news-pulse news-pulse--two"></span>
+              <i class="news-line news-line--one"></i>
+              <i class="news-line news-line--two"></i>
+              <i class="news-line news-line--three"></i>
+              <em>LIVE</em>
+            </>
+          )}
 
-        {pillar.visual === 'tools' && (
-          <div class="pillar-visual pillar-visual--tools" aria-hidden="true">
-            <span class="tool-node tool-node--one">IN</span>
-            <span class="tool-node tool-node--two">AI</span>
-            <span class="tool-node tool-node--three">OUT</span>
-            <i class="tool-link tool-link--one"></i>
-            <i class="tool-link tool-link--two"></i>
-          </div>
-        )}
+          {pillar.visual === 'tools' && (
+            <>
+              <span class="tool-node tool-node--one">IN</span>
+              <span class="tool-node tool-node--two">AI</span>
+              <span class="tool-node tool-node--three">OUT</span>
+              <i class="tool-link tool-link--one"></i>
+              <i class="tool-link tool-link--two"></i>
+              <i class="tool-link tool-link--three"></i>
+              <em>RUN</em>
+            </>
+          )}
 
-        {pillar.visual === 'trends' && (
-          <div class="pillar-visual pillar-visual--trends" aria-hidden="true">
-            <span class="trend-horizon"></span>
-            <i class="trend-grid trend-grid--one"></i>
-            <i class="trend-grid trend-grid--two"></i>
-            <i class="trend-grid trend-grid--three"></i>
-            <svg viewBox="0 0 220 72" focusable="false" aria-hidden="true"><path d="M4 60 C44 56 59 42 89 49 S129 49 151 24 S185 28 216 8" /></svg>
-          </div>
-        )}
-
+          {pillar.visual === 'trends' && (
+            <>
+              <span class="trend-horizon"></span>
+              <i class="trend-grid trend-grid--one"></i>
+              <i class="trend-grid trend-grid--two"></i>
+              <i class="trend-grid trend-grid--three"></i>
+              <i class="trend-grid trend-grid--four"></i>
+              <svg viewBox="0 0 220 88" focusable="false" aria-hidden="true"><path d="M4 71 C33 69 46 57 66 61 S103 69 123 43 S152 52 169 28 S196 34 216 10" /></svg>
+              <em>NEXT</em>
+            </>
+          )}
+        </div>
         <h3>{pillar.title}</h3>
         <p>{pillar.text}</p>
         <a href={`${withBase('topics/')}#${pillar.slug}`}>Explore topic ↗</a>
