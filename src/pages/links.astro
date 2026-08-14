@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE } from '../config/site';
-import { withBase, absoluteUrl, topicFilterUrl } from '../utils/site-paths';
+import { CATEGORY_META, SITE } from '../config/site';
+import { withBase, absoluteUrl } from '../utils/site-paths';
 
 const hubLinks = [
   { key: 'youtube-shorts', label: '▶ Watch the latest Shorts', href: SITE.youtubeShorts, external: true, primary: true },
@@ -12,11 +12,7 @@ const hubLinks = [
   { key: 'facebook', label: 'Follow on Facebook', href: SITE.facebook, external: true },
 ] as const;
 
-const topics = [
-  { label: 'AI NEWS', href: topicFilterUrl('AI News') },
-  { label: 'AI TOOLS', href: topicFilterUrl('AI Tools') },
-  { label: 'TECH TRENDS', href: topicFilterUrl('Tech Trends') },
-] as const;
+const topics = Object.values(CATEGORY_META).map((meta) => ({ label: meta.title, href: `${withBase('topics/')}#${meta.slug}` }));
 
 const structuredData = {
   '@context': 'https://schema.org',
