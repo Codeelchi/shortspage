@@ -15,7 +15,7 @@ const isActive = (match: string) => currentPath.includes(match);
 <header class:list={['site-header', { 'site-header--compact': compact }] }>
   <div class="nav-wrap container">
     <a class="brand" href={withBase('')} aria-label={`${SITE.name} home`}><img src={withBase('logo.svg')} alt="" width="48" height="48" /><span><b>AI&TECH</b><em>TRENDS</em></span></a>
-    {!compact && <nav class="desktop-nav" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search</a></nav>}
+    <nav class="desktop-nav" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search</a></nav>
     {compact ? <a class="nav-cta link-hub-back" href={withBase('')}>Back to hub</a> : <a class="nav-cta" href={SITE.youtubeChannel} target="_blank" rel="noopener noreferrer">YouTube <span aria-hidden="true">↗</span></a>}
     {!compact && <details class="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search Shorts</a></nav></details>}
   </div>
