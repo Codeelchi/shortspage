@@ -13,6 +13,6 @@ import { SITE } from '../config/site';
 import { absoluteUrl } from '../utils/paths';
 import { sortShorts } from '../utils/shorts';
 const entries=sortShorts(await getCollection('shorts'));const latest=entries.slice(0,4);const featured=entries.find((entry)=>entry.data.featured)??entries[0];
-const structuredData=[{'@context':'https://schema.org','@type':'WebSite',name:SITE.name,url:absoluteUrl(''),description:SITE.description},{'@context':'https://schema.org','@type':'Organization',name:SITE.name,url:absoluteUrl(''),logo:absoluteUrl('logo.svg'),sameAs:[SITE.youtubeChannel,SITE.githubUrl]}];
+const structuredData=[{'@context':'https://schema.org','@type':'WebSite',name:SITE.name,url:absoluteUrl(''),description:SITE.description},{'@context':'https://schema.org','@type':'Organization',name:SITE.name,url:absoluteUrl(''),logo:absoluteUrl('logo.svg'),sameAs:[SITE.youtubeChannel,SITE.instagram,SITE.tiktok,SITE.facebook,SITE.githubUrl]}];
 ---
 <BaseLayout title="AI&TECH TRENDS — AI News, Tools & Tech Shorts" description={SITE.description} canonicalPath="" structuredData={structuredData}><Hero /><SignalTicker /><LatestSignals entries={latest} />{featured&&<FeaturedShort entry={featured} />}<ChannelFormats /><ContentPillars /><Manifesto /><SubscribeCTA /></BaseLayout>

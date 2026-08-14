@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CATEGORY_META, SITE } from '../config/site';
+import { withBase, absoluteUrl } from '../utils/site-paths';
+
+const hubLinks = [
+  { key: 'youtube-shorts', label: '▶ Watch the latest Shorts', href: SITE.youtubeShorts, external: true, primary: true },
+  { key: 'youtube-subscribe', label: 'Subscribe on YouTube', href: SITE.youtubeSubscribe, external: true, primary: false },
+  { key: 'website', label: 'Explore the Signal Hub', href: withBase(''), external: false, primary: false },
+  { key: 'instagram', label: 'Follow on Instagram', href: SITE.instagram, external: true, primary: false },
+  { key: 'tiktok', label: 'Follow on TikTok', href: SITE.tiktok, external: true, primary: false },
+  { key: 'facebook', label: 'Follow on Facebook', href: SITE.facebook, external: true, primary: false },
+] as const;
+
+const topics = Object.values(CATEGORY_META).map((meta) => ({ label: meta.title, href: `${withBase('topics/')}#${meta.slug}` }));
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: absoluteUrl(''),
+  logo: absoluteUrl('logo.svg'),
+  sameAs: [SITE.youtubeChannel, SITE.instagram, SITE.tiktok, SITE.facebook],
+};
+---
+<BaseLayout
+  title="AI&TECH TRENDS — All Links"
+  description="Watch AI & tech Shorts, follow the channels and explore fast, practical signals."
+  canonicalPath="links/"
+  structuredData={structuredData}
+  pageClass="links-page"
+>
+  <section class="link-hub" aria-labelledby="link-hub-title">
+    <div class="link-hub__signal" aria-hidden="true">AITT // LINK SIGNAL</div>
+    <div class="link-profile">
+      <img src={withBase('logo.svg')} alt="AI&TECH TRENDS logo" width="112" height="112" />
+      <div>
+        <p class="eyebrow"><i></i> FOLLOW THE SIGNAL</p>
+        <h1 id="link-hub-title">AI&TECH TRENDS</h1>
+        <p class="link-profile__claim">Fast insights. <strong>Zero fluff.</strong></p>
+        <p class="link-profile__description">AI news. Better tools. Smarter workflows. Emerging tech.</p>
+      </div>
+    </div>
+
+    <nav class="hub-links" aria-label="AI&TECH TRENDS channels">
+      {hubLinks.map((link) => (
+        <a
+          class:list={['hub-link', { 'hub-link--primary': link.primary }]}
+          href={link.href}
+          target={link.external ? '_blank' : undefined}
+          rel={link.external ? 'noopener noreferrer' : undefined}
+          data-link-key={link.key}
+        >
+          <span>{link.label}</span>
+          <svg class="hub-link__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" /></svg>
+        </a>
+      ))}
+    </nav>
+
+    <nav class="link-topics" aria-label="Content categories">
+      {topics.map((topic) => <a href={topic.href}>{topic.label}</a>)}
+    </nav>
+
+    <p class="link-hub__status">SCAN · FILTER · WATCH</p>
+  </section>
+</BaseLayout>
