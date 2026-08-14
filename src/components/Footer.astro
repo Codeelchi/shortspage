@@ -1,10 +1,10 @@
 ---
-import { SITE } from '../config/site';
+import { SITE, SOCIAL_LINKS } from '../config/site';
 import { withBase } from '../utils/site-paths';
 ---
 <footer class="site-footer container">
-<div class="footer-brand"><img src={withBase('logo.svg')} alt="" width="46" height="46" /><div><strong>AI&TECH TRENDS</strong><span>Fast insights. Zero fluff.</span></div></div>
-<nav aria-label="Footer navigation"><a href={withBase('shorts/')}>Shorts</a><a href={withBase('topics/')}>Topics</a><a href={withBase('about/')}>About</a><a href={withBase('imprint/')}>Imprint</a><a href={withBase('privacy/')}>Privacy</a></nav>
-<div class="footer-socials"><a href={SITE.youtubeChannel} target="_blank" rel="noreferrer">YouTube ↗</a><a href={SITE.githubUrl} target="_blank" rel="noreferrer">GitHub ↗</a></div>
-<p class="footer-meta">AI News · AI Tools · Tech Trends · Digital Business · Automation · Workflows</p>
+  <div class="footer-brand"><img src={withBase('logo.svg')} alt="" width="46" height="46" /><div><strong>AI&TECH TRENDS</strong><span>Fast insights. Zero fluff.</span></div></div>
+  <div class="footer-follow"><span class="footer-label">FOLLOW THE SIGNAL</span><div class="footer-socials">{SOCIAL_LINKS.map((social) => <a href={social.href} target="_blank" rel="noopener noreferrer">{social.label} ↗</a>)}</div></div>
+  <nav class="footer-utility" aria-label="Footer navigation"><a href={withBase('shorts/')}>Shorts</a><a href={withBase('topics/')}>Topics</a><a href={withBase('about/')}>About</a><a href={withBase('privacy/')}>Privacy</a><a href={withBase('imprint/')}>Imprint</a><a href={withBase('links/')}>All Links</a></nav>
+  <p class="footer-meta">AI News · AI Tools · Tech Trends · Digital Business · Automation · Workflows</p>
 </footer>
