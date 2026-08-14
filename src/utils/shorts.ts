@@ -3,7 +3,25 @@ import { CATEGORY_META, type ShortCategory } from '../config/site';
 import { absoluteUrl, withBase } from './site-paths';
 
 export type ShortEntry = CollectionEntry<'shorts'>;
-export const sortShorts = (entries: ShortEntry[]) => [...entries].sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const CATEGORY_ORDER: Record<ShortCategory, number> = {
+  'AI News': 0,
+  'AI Tools': 1,
+  'Tech Trends': 2,
+};
+
+export const sortShorts = (entries: ShortEntry[]) => [...entries].sort((a, b) => {
+  const publishedDelta = b.data.publishedAt.getTime() - a.data.publishedAt.getTime();
+  if (publishedDelta !== 0) return publishedDelta;
+
+  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+
+  const categoryDelta = CATEGORY_ORDER[a.data.category] - CATEGORY_ORDER[b.data.category];
+  if (categoryDelta !== 0) return categoryDelta;
+
+  return a.data.title.localeCompare(b.data.title, 'en', { numeric: true });
+});
+
 export const getThumbnail = (entry: ShortEntry, absolute = false) => {
   const thumbnail = entry.data.thumbnail;
   const value = thumbnail ? (/^https?:\/\//.test(thumbnail) ? thumbnail : withBase(thumbnail)) : `https://i.ytimg.com/vi/${entry.data.youtubeId}/maxresdefault.jpg`;
