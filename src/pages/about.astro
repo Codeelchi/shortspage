@@ -4,4 +4,35 @@ import Manifesto from '../components/Manifesto.astro';
 import ContentPillars from '../components/ContentPillars.astro';
 import SubscribeCTA from '../components/SubscribeCTA.astro';
 ---
-<BaseLayout title="About — AI&TECH TRENDS" description="AI&TECH TRENDS filters fast-moving AI and technology into short, focused and practical signals." canonicalPath="about/"><section class="page-hero container"><p class="eyebrow"><i></i> ABOUT THE SIGNAL</p><h1>Fast. Focused.<br/><span>Practical.</span></h1><p>The goal is not to cover everything. It is to show what changed, why it matters and what is actually worth trying.</p></section><Manifesto /><ContentPillars /><SubscribeCTA /></BaseLayout>
+<BaseLayout
+  title="About — AI&TECH TRENDS"
+  description="AI&TECH TRENDS filters fast-moving AI and technology into short, focused and practical signals."
+  canonicalPath="about/"
+  pageClass="about-page"
+>
+  <section class="about-hero container">
+    <div class="about-hero__copy">
+      <p class="eyebrow"><i></i> ABOUT THE SIGNAL</p>
+      <h1>Fast. Focused.<br /><span>Practical.</span></h1>
+      <p>The goal is not to cover everything. It is to show what changed, why it matters and what is actually worth trying.</p>
+    </div>
+
+    <div class="about-hero__visual" aria-hidden="true">
+      <div class="about-hero__orbit about-hero__orbit--outer"></div>
+      <div class="about-hero__orbit about-hero__orbit--inner"></div>
+      <div class="about-hero__sequence">
+        <span class="about-hero__micro">EDITORIAL SYSTEM / 01</span>
+        <strong>SCAN</strong>
+        <i></i>
+        <strong>FILTER</strong>
+        <i></i>
+        <strong>ACT</strong>
+      </div>
+      <span class="about-hero__status">LIVE SIGNAL</span>
+      <span class="about-hero__coordinate">AI / TECH / NOW</span>
+    </div>
+  </section>
+  <Manifesto />
+  <ContentPillars />
+  <SubscribeCTA />
+</BaseLayout>

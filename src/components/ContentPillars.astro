@@ -1,10 +1,80 @@
 ---
 import { CATEGORY_META } from '../config/site';
 import { withBase } from '../utils/paths';
+
 const pillars = [
-  { number: '01', label: 'AI NEWS', title: 'What changed?', text: 'Models, releases, companies and industry shifts — compressed into the change that actually matters.', slug: CATEGORY_META['AI News'].slug },
-  { number: '02', label: 'AI TOOLS', title: 'What is useful?', text: 'Apps, agents, automation and workflows with a clear bias toward practical value.', slug: CATEGORY_META['AI Tools'].slug },
-  { number: '03', label: 'TECH TRENDS', title: 'What comes next?', text: 'Emerging technology, software and digital business — watched for the shifts that change how people work.', slug: CATEGORY_META['Tech Trends'].slug },
+  {
+    number: '01',
+    label: 'AI NEWS',
+    title: 'What changed?',
+    text: 'Models, releases, companies and industry shifts — compressed into the change that actually matters.',
+    slug: CATEGORY_META['AI News'].slug,
+    visual: 'news',
+  },
+  {
+    number: '02',
+    label: 'AI TOOLS',
+    title: 'What is useful?',
+    text: 'Apps, agents, automation and workflows with a clear bias toward practical value.',
+    slug: CATEGORY_META['AI Tools'].slug,
+    visual: 'tools',
+  },
+  {
+    number: '03',
+    label: 'TECH TRENDS',
+    title: 'What comes next?',
+    text: 'Emerging technology, software and digital business — watched for the shifts that change how people work.',
+    slug: CATEGORY_META['Tech Trends'].slug,
+    visual: 'trends',
+  },
 ];
 ---
-<section class="content-pillars container section" id="topics" aria-labelledby="pillars-title"><div class="section-heading"><p class="eyebrow"><i></i> CONTENT PILLARS</p><h2 id="pillars-title">The topics that <span>move fastest.</span></h2><p class="section-copy">The editorial filter stays simple: understand what changed, why it matters and what is worth testing next.</p></div><div class="pillar-grid">{pillars.map((pillar) => <article class="pillar-card"><div class="pillar-card__top"><span>{pillar.number}</span><small>{pillar.label}</small></div><div class="pillar-bars" aria-hidden="true"><i></i><i></i><i></i></div><h3>{pillar.title}</h3><p>{pillar.text}</p><a href={`${withBase('topics/')}#${pillar.slug}`}>Explore topic ↗</a></article>)}</div></section>
+<section class="content-pillars container section" id="topics" aria-labelledby="pillars-title">
+  <div class="section-heading">
+    <p class="eyebrow"><i></i> CONTENT PILLARS</p>
+    <h2 id="pillars-title">The topics that <span>move fastest.</span></h2>
+    <p class="section-copy">The editorial filter stays simple: understand what changed, why it matters and what is worth testing next.</p>
+  </div>
+
+  <div class="pillar-grid">
+    {pillars.map((pillar) => (
+      <article class={`pillar-card pillar-card--${pillar.visual}`}>
+        <div class="pillar-card__top"><span>{pillar.number}</span><small>{pillar.label}</small></div>
+
+        {pillar.visual === 'news' && (
+          <div class="pillar-visual pillar-visual--news" aria-hidden="true">
+            <span class="news-radar"></span>
+            <i class="news-line news-line--one"></i>
+            <i class="news-line news-line--two"></i>
+            <i class="news-line news-line--three"></i>
+            <b>LIVE</b>
+          </div>
+        )}
+
+        {pillar.visual === 'tools' && (
+          <div class="pillar-visual pillar-visual--tools" aria-hidden="true">
+            <span class="tool-node tool-node--one">IN</span>
+            <span class="tool-node tool-node--two">AI</span>
+            <span class="tool-node tool-node--three">OUT</span>
+            <i class="tool-link tool-link--one"></i>
+            <i class="tool-link tool-link--two"></i>
+          </div>
+        )}
+
+        {pillar.visual === 'trends' && (
+          <div class="pillar-visual pillar-visual--trends" aria-hidden="true">
+            <span class="trend-horizon"></span>
+            <i class="trend-grid trend-grid--one"></i>
+            <i class="trend-grid trend-grid--two"></i>
+            <i class="trend-grid trend-grid--three"></i>
+            <svg viewBox="0 0 220 72" focusable="false" aria-hidden="true"><path d="M4 60 C44 56 59 42 89 49 S129 49 151 24 S185 28 216 8" /></svg>
+          </div>
+        )}
+
+        <h3>{pillar.title}</h3>
+        <p>{pillar.text}</p>
+        <a href={`${withBase('topics/')}#${pillar.slug}`}>Explore topic ↗</a>
+      </article>
+    ))}
+  </div>
+</section>
