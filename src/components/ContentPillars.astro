@@ -1,9 +1,10 @@
 ---
-import { topicFilterUrl } from '../utils/paths';
+import { CATEGORY_META } from '../config/site';
+import { withBase } from '../utils/paths';
 const pillars = [
-  { number: '01', label: 'AI NEWS', title: 'What changed?', text: 'Models, releases, companies and industry shifts — compressed into the change that actually matters.', category: 'AI News' },
-  { number: '02', label: 'AI TOOLS', title: 'What is useful?', text: 'Apps, agents, automation and workflows with a clear bias toward practical value.', category: 'AI Tools' },
-  { number: '03', label: 'TECH TRENDS', title: 'What comes next?', text: 'Emerging technology, software and digital business — watched for the shifts that change how people work.', category: 'Tech Trends' },
+  { number: '01', label: 'AI NEWS', title: 'What changed?', text: 'Models, releases, companies and industry shifts — compressed into the change that actually matters.', slug: CATEGORY_META['AI News'].slug },
+  { number: '02', label: 'AI TOOLS', title: 'What is useful?', text: 'Apps, agents, automation and workflows with a clear bias toward practical value.', slug: CATEGORY_META['AI Tools'].slug },
+  { number: '03', label: 'TECH TRENDS', title: 'What comes next?', text: 'Emerging technology, software and digital business — watched for the shifts that change how people work.', slug: CATEGORY_META['Tech Trends'].slug },
 ];
 ---
-<section class="content-pillars container section" id="topics" aria-labelledby="pillars-title"><div class="section-heading"><p class="eyebrow"><i></i> CONTENT PILLARS</p><h2 id="pillars-title">The topics that <span>move fastest.</span></h2><p class="section-copy">The editorial filter stays simple: understand what changed, why it matters and what is worth testing next.</p></div><div class="pillar-grid">{pillars.map((pillar) => <article class="pillar-card"><div class="pillar-card__top"><span>{pillar.number}</span><small>{pillar.label}</small></div><div class="pillar-bars" aria-hidden="true"><i></i><i></i><i></i></div><h3>{pillar.title}</h3><p>{pillar.text}</p><a href={topicFilterUrl(pillar.category)}>Browse signals ↗</a></article>)}</div></section>
+<section class="content-pillars container section" id="topics" aria-labelledby="pillars-title"><div class="section-heading"><p class="eyebrow"><i></i> CONTENT PILLARS</p><h2 id="pillars-title">The topics that <span>move fastest.</span></h2><p class="section-copy">The editorial filter stays simple: understand what changed, why it matters and what is worth testing next.</p></div><div class="pillar-grid">{pillars.map((pillar) => <article class="pillar-card"><div class="pillar-card__top"><span>{pillar.number}</span><small>{pillar.label}</small></div><div class="pillar-bars" aria-hidden="true"><i></i><i></i><i></i></div><h3>{pillar.title}</h3><p>{pillar.text}</p><a href={`${withBase('topics/')}#${pillar.slug}`}>Explore topic ↗</a></article>)}</div></section>
