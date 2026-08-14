@@ -3,18 +3,20 @@ import { SITE } from '../config/site';
 import { withBase } from '../utils/site-paths';
 interface Props { currentPath: string; }
 const { currentPath } = Astro.props;
+const compact = currentPath.includes('/links/');
 const links = [
   { label: 'Shorts', href: withBase('shorts/'), match: '/shorts/' },
   { label: 'Topics', href: withBase('topics/'), match: '/topics/' },
   { label: 'About', href: withBase('about/'), match: '/about/' },
+  { label: 'Links', href: withBase('links/'), match: '/links/' },
 ];
 const isActive = (match: string) => currentPath.includes(match);
 ---
-<header class="site-header">
+<header class:list={['site-header', { 'site-header--compact': compact }] }>
   <div class="nav-wrap container">
     <a class="brand" href={withBase('')} aria-label={`${SITE.name} home`}><img src={withBase('logo.svg')} alt="" width="48" height="48" /><span><b>AI&TECH</b><em>TRENDS</em></span></a>
-    <nav class="desktop-nav" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search</a></nav>
-    <a class="nav-cta" href={SITE.youtubeChannel} target="_blank" rel="noreferrer">YouTube <span aria-hidden="true">↗</span></a>
-    <details class="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search Shorts</a></nav></details>
+    {!compact && <nav class="desktop-nav" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search</a></nav>}
+    {compact ? <a class="nav-cta link-hub-back" href={withBase('')}>Back to hub</a> : <a class="nav-cta" href={SITE.youtubeChannel} target="_blank" rel="noopener noreferrer">YouTube <span aria-hidden="true">↗</span></a>}
+    {!compact && <details class="mobile-nav"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isActive(link.match) ? 'page' : undefined}>{link.label}</a>)}<a href={`${withBase('shorts/')}#filters`}>Search Shorts</a></nav></details>}
   </div>
 </header>
