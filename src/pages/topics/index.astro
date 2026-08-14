@@ -5,19 +5,41 @@ import ShortCard from '../../components/ShortCard.astro';
 import SubscribeCTA from '../../components/SubscribeCTA.astro';
 import { CATEGORY_META, SITE, type ShortCategory } from '../../config/site';
 import { signalNumber, sortShorts } from '../../utils/shorts';
+
 const entries = sortShorts(await getCollection('shorts'));
 const topics = Object.entries(CATEGORY_META) as [ShortCategory, (typeof CATEGORY_META)[ShortCategory]][];
+const laneAccent: Record<ShortCategory, string> = { 'AI News': 'scan', 'AI Tools': 'flow', 'Tech Trends': 'outlook' };
 ---
 <BaseLayout title="Topics — AI&TECH TRENDS" description="Explore AI News, AI Tools and Tech Trends — the three signal channels behind AI&TECH TRENDS." canonicalPath="topics/">
-<section class="page-hero container"><p class="eyebrow"><i></i> CONTENT PILLARS</p><h1>Three lanes.<br/><span>One filter.</span></h1><p>Relevance first: what changed, what is useful and what comes next.</p></section>
-<div class="topic-lanes container">
-  {topics.map(([category, meta]) => {
-    const matching = entries.filter((entry) => entry.data.category === category);
-    return <section class="topic-lane section" id={meta.slug} aria-labelledby={`${meta.slug}-title`}>
-      <div class="section-heading section-heading--split"><div><p class="eyebrow"><i></i> {meta.eyebrow}</p><h2 id={`${meta.slug}-title`}>{meta.title}</h2></div><div><p>{meta.summary}</p><a class="text-link" href={SITE.youtubeShorts} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></div>
-      {matching.length > 0 ? <div class="short-grid short-grid--library">{matching.map((entry,index) => <ShortCard entry={entry} signal={signalNumber(index)} />)}</div> : <p class="topic-lane__empty">No signals in this lane yet.</p>}
-    </section>;
-  })}
-</div>
-<SubscribeCTA />
+  <section class="page-hero container">
+    <p class="eyebrow"><i></i> CONTENT PILLARS</p>
+    <h1>Three lanes.<br /><span>One filter.</span></h1>
+    <p>Relevance first: what changed, what is useful and what comes next.</p>
+  </section>
+
+  <nav class="topic-jump container" aria-label="Jump to a content lane">
+    {topics.map(([category, meta], index) => {
+      const count = entries.filter((entry) => entry.data.category === category).length;
+      return <a class={`topic-jump__lane topic-jump__lane--${laneAccent[category]}`} href={`#${meta.slug}`}>
+        <span>0{index + 1}</span>
+        <b>{meta.title}</b>
+        <small>{String(count).padStart(2, '0')} SIGNALS</small>
+        <i aria-hidden="true"></i>
+      </a>;
+    })}
+  </nav>
+
+  <div class="topic-lanes container">
+    {topics.map(([category, meta]) => {
+      const matching = entries.filter((entry) => entry.data.category === category);
+      return <section class="topic-lane section" id={meta.slug} aria-labelledby={`${meta.slug}-title`}>
+        <div class="section-heading section-heading--split">
+          <div><p class="eyebrow"><i></i> {meta.eyebrow}</p><h2 id={`${meta.slug}-title`}>{meta.title}</h2></div>
+          <div><p>{meta.summary}</p><div class="topic-lane__links"><span>{String(matching.length).padStart(2, '0')} signals in this lane</span><a class="text-link" href={`${SITE.youtubeShorts}`} target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></div></div>
+        </div>
+        {matching.length > 0 ? <div class="short-grid short-grid--library">{matching.map((entry, index) => <ShortCard entry={entry} signal={signalNumber(index)} />)}</div> : <p class="topic-lane__empty">No signals in this lane yet.</p>}
+      </section>;
+    })}
+  </div>
+  <SubscribeCTA />
 </BaseLayout>
