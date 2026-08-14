@@ -1,0 +1,50 @@
+---
+import type { ShortEntry } from '../utils/shorts';
+import { CATEGORY_META, type ShortCategory } from '../config/site';
+import { withBase } from '../utils/paths';
+
+interface Props { entries: ShortEntry[]; }
+const { entries } = Astro.props;
+const categories = Object.entries(CATEGORY_META) as [ShortCategory, (typeof CATEGORY_META)[ShortCategory]][];
+const laneCopy: Record<ShortCategory, string> = {
+  'AI News': 'What changed right now?',
+  'AI Tools': 'What is useful today?',
+  'Tech Trends': 'What is coming next?',
+};
+const laneAccent: Record<ShortCategory, string> = {
+  'AI News': 'scan',
+  'AI Tools': 'flow',
+  'Tech Trends': 'outlook',
+};
+---
+<section class="home-overview container section" aria-labelledby="overview-title">
+  <div class="section-heading section-heading--split">
+    <div>
+      <p class="eyebrow"><i></i> THE SIGNAL MAP</p>
+      <h2 id="overview-title">Find the <span>right signal.</span></h2>
+    </div>
+    <p>Start with the lane that matches your question. Every signal stays short, focused and connected to its source context.</p>
+  </div>
+
+  <div class="home-overview__stats" aria-label="Signal overview">
+    <span><b>{String(entries.length).padStart(2, '0')}</b> VERIFIED SIGNALS</span>
+    <span><b>03</b> EDITORIAL LANES</span>
+    <span><b>01</b> PLAYABLE FEATURE</span>
+  </div>
+
+  <div class="home-overview__lanes">
+    {categories.map(([category, meta], index) => {
+      const count = entries.filter((entry) => entry.data.category === category).length;
+      return (
+        <a class={`home-lane home-lane--${laneAccent[category]}`} href={`${withBase('topics/')}#${meta.slug}`}>
+          <span class="home-lane__number">0{index + 1}</span>
+          <span class="home-lane__signal" aria-hidden="true"><i></i><i></i><i></i></span>
+          <small>{meta.eyebrow}</small>
+          <strong>{meta.title}</strong>
+          <p>{laneCopy[category]}</p>
+          <footer><b>{String(count).padStart(2, '0')} SIGNALS</b><em>OPEN LANE ↗</em></footer>
+        </a>
+      );
+    })}
+  </div>
+</section>
