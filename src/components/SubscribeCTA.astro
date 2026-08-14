@@ -1,4 +1,5 @@
 ---
 import { SITE } from '../config/site';
+import { withBase } from '../utils/site-paths';
 ---
-<section class="subscribe-section container section" aria-labelledby="subscribe-title"><div class="subscribe-panel"><div><p class="eyebrow"><i></i> FOLLOW THE SIGNAL</p><h2 id="subscribe-title">Your next useful idea<br/>is one Short away.</h2><p>AI news. Better tools. Smarter workflows. Emerging tech.</p></div><a class="button primary big" href={SITE.youtubeSubscribe} target="_blank" rel="noreferrer">▶ Subscribe on YouTube</a></div></section>
+<section class="subscribe-section container section" aria-labelledby="subscribe-title"><div class="subscribe-panel"><div><p class="eyebrow"><i></i> FOLLOW THE SIGNAL</p><h2 id="subscribe-title">Your next useful idea<br/>is one Short away.</h2><p>AI news. Better tools. Smarter workflows. Emerging tech.</p><a class="subscribe-links" href={withBase('links/')}>Find every channel → All links</a></div><a class="button primary big" href={SITE.youtubeSubscribe} target="_blank" rel="noopener noreferrer">▶ Subscribe on YouTube</a></div></section>
