@@ -5,20 +5,20 @@ Static Astro site for the AI&TECH TRENDS YouTube Shorts channel.
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
 ## Build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Preview
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 The production site is configured for GitHub Pages at `/shortspage/`. Internal URLs use `import.meta.env.BASE_URL` so local and GitHub Pages builds share the same source.
